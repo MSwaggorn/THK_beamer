@@ -1,0 +1,39 @@
+% Package Imports
+% Beamer base packages
+\usepackage[ngerman]{babel}          % German language support
+\usepackage[utf8]{inputenc}          % UTF-8 input encoding
+\usepackage[T1]{fontenc}             % Font encoding
+\usepackage{csquotes}                % Context sensitive quotation marks
+\usepackage{helvet}                  % Helvetica font
+\renewcommand{\familydefault}{\sfdefault} % Set sans-serif as default
+
+% Graphics and colors
+\usepackage{graphicx}                % Include graphics
+\usepackage{xcolor}                  % Color support
+\usepackage{tikz}                    % Drawing capabilities
+
+% Tables
+\usepackage{booktabs}                % Professional tables
+
+% References and citations
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{references.bib}
+
+% Cross-referencing
+\usepackage{hyperref}                % Hyperlinks
+\usepackage{cleveref}                % Clever cross-references
+
+% Additional useful packages
+\usepackage{amsmath}                 % Math support
+\usepackage{amssymb}                 % Math symbols
+\usepackage{caption}                 % Caption customization
+\usepackage{subcaption}              % Subfigures support
+\usepackage{enumitem}                % Enhanced list formatting
+
+% Configure hyperref
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=THRed,
+    urlcolor=THRed
+}

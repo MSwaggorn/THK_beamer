@@ -1,0 +1,26 @@
+% Font and Text Size Definitions
+
+% Define custom font sizes
+\newcommand{\headingsize}{\fontsize{12pt}{14pt}\selectfont}
+\newcommand{\subheadingsize}{\fontsize{11pt}{13pt}\selectfont}
+\newcommand{\normaltextsize}{\fontsize{9pt}{11pt}\selectfont}
+\newcommand{\captionsizetext}{\fontsize{8pt}{10pt}\selectfont}
+\newcommand{\footnotesmallsize}{\fontsize{5pt}{6pt}\selectfont}
+
+% Set default beamer font sizes
+\setbeamerfont{frametitle}{size=\headingsize}
+\setbeamerfont{normal text}{size=\normaltextsize}
+\setbeamerfont{footnote}{size=\footnotesmallsize}
+\setbeamerfont{caption}{size=\captionsizetext}
+\setbeamerfont{caption name}{size=\captionsizetext}
+
+% Custom command for subheadings in content
+\newcommand{\subheading}[1]{%
+    {\subheadingsize\bfseries #1}%
+    \par\vspace{0.5em}%
+}
+
+% Adjust spacing
+\AtBeginDocument{%
+    \normaltextsize
+}

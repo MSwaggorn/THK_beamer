@@ -1,0 +1,109 @@
+% Main Presentation File
+\documentclass[aspectratio=169]{beamer}
+
+% Import configuration files
+\input{config/packages}
+\input{config/colors}
+\input{config/variables}
+\input{config/fonts}
+\input{config/theme}
+\input{config/slide-types}
+
+% Set graphics path
+\graphicspath{{images/}}
+
+\begin{document}
+
+% Title Slide
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+% Example: Bullet Points Slide
+\begin{frame}
+\frametitle{Signal Characteristics of Interest}
+
+\begin{itemize}
+    \item \textbf{Stichpunkte mit \texttt{itemize}}
+    \begin{itemize}
+        \item Verschiedene Farben für jede Ebene.
+        \item Lorem ipsum dolor sit amet.
+        \begin{itemize}
+            \item Textumbruch erfolgt automatisch mit richtiger Einrückung: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+            \begin{itemize}
+                \item Das ist die letzte Farbe.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    
+\end{itemize}
+
+\end{frame}
+
+% Example: Figure Slide
+\begin{frame}
+\frametitle{Example Figure}
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.7\textwidth]{example-image}
+    \caption{This is an example figure caption.}
+\end{figure}
+
+\end{frame}
+
+% Example: Side-by-Side Slide
+\begin{frame}
+\frametitle{Side-by-Side Example}
+
+\begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+        \begin{itemize}
+            \item First item
+            \item Second item
+            \item Third item
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{example-image}
+            \caption{Figure caption}
+        \end{figure}
+    \end{column}
+\end{columns}
+
+\end{frame}
+
+% Example: Side-by-Side with Subheadings
+\begin{frame}
+\frametitle{Comparison}
+
+\begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+        \subheading{Method A}
+        \begin{itemize}
+            \item Advantage 1
+            \item Advantage 2
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+        \subheading{Method B}
+        \begin{itemize}
+            \item Advantage 1
+            \item Advantage 2
+        \end{itemize}
+    \end{column}
+\end{columns}
+
+\end{frame}
+
+% References
+\begin{frame}[allowframebreaks]
+\frametitle{Literatur}
+\printbibliography[heading=none]
+\end{frame}
+
+\end{document}
