@@ -1,0 +1,68 @@
+# --- LaTeX auxiliary files ---
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.lb
+
+# --- Intermediate documents ---
+*.dvi
+*.xdv
+*.bbl
+*.bcf
+*.blg
+*-blx.bib
+*.run.xml
+
+# --- LaTeX diagnostics ---
+*.synctex.gz
+*.synctex.gz(busy)
+
+# --- Beamer / PDF extras ---
+*.nav
+*.snm
+*.vrb
+
+# --- Indexing ---
+*.idx
+*.ilg
+*.ind
+
+# --- Glossaries & nomenclature ---
+*.glo
+*.gls
+*.glg
+*.glsdefs
+*.ist
+*.acn
+*.acr
+*.alg
+*.nlo
+*.nls
+
+# --- TikZ and externalization ---
+*.dpth
+*.md5
+*.auxlock
+
+# --- Make files ---
+*.makefile
+
+# --- Temporary files ---
+*.tmp
+*.tmp.*
+*.bak
+*.swp
+*~
+
+# --- MacOS and editor system files ---
+.DS_Store
+Thumbs.db
+*.vscode/
