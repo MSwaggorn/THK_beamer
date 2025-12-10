@@ -29,6 +29,8 @@
 *.nav
 *.snm
 *.vrb
+*.blg
+*.fdb_latexmk
 
 # --- Indexing ---
 *.idx

@@ -1,0 +1,129 @@
+% -------------------- user configuration -------------------- %
+% customize these settings for your presentation
+
+% --- presentation metadata --- %
+\newcommand{\presentationtitle}{Das ist der Präsentationstitel}
+\newcommand{\presentationsubtitle}{Das ist der Präsentationsuntertitel}
+\newcommand{\presentationdate}{12/9/2025}
+
+% --- author information (displayed in footer) --- %
+\newcommand{\authorname}{Max Mustermann}
+\newcommand{\name}{eingereicht bei: Prof. Dr. Albus Dumbledore}
+\newcommand{\namesecond}{Zweitgutachter: Ralf Revisor}
+
+% --- images (place all images in 'images/' folder) --- %
+\newcommand{\universitylogo}{TH_Koeln_Logo.svg.png}  % logo shown in footer
+\newcommand{\titleimagevar}{title_image.png}          % large image on title page
+
+% --- layout settings --- %
+% vertical alignment: 'c' = centered | 't' = top-aligned (fixed distance from heading)
+\newcommand{\verticalAlignment}{t}
+
+% --- PDF metadata (appears in PDF document properties) --- %
+\newcommand{\pdfsubject}{Presentation}
+\newcommand{\pdfkeywords}{Keywords, Here, Separated by, Commas}
+
+% -------------------- custom commands -------------------- %
+
+% subheading command for section headings within slides
+\newcommand{\subheading}[1]{%
+    {\subheadingsize\bfseries #1}%
+    \par\vspace{0.5em}%
+}
+
+% source attribution at bottom of slide (for citing images, data sources, etc.)
+\newcommand{\sourcenote}[1]{%
+    \vfill%
+    \vspace*{-1.5em}%
+    \hspace{0pt}\footnotesmallsize #1%
+    \vspace{1.8em}%
+}
+
+% --- colored text boxes --- %
+% automatic height box - adjusts height to fit text content
+% usage: \coloredbox[options]{color}{text}
+% options: border = add darker border | width = custom width (default: \textwidth)
+% examples: \coloredbox{THRed}{text}
+%           \coloredbox[border]{THRed}{text}
+%           \coloredbox[width=0.5\textwidth]{THRed}{text}
+%           \coloredbox[border,width=0.7\textwidth]{THRed}{text}
+\makeatletter
+\define@key{cbox}{border}[true]{\def\cbox@border{#1}}
+\define@key{cbox}{width}{\def\cbox@width{#1}}
+\newcommand{\coloredbox}[3][]{%
+    \setkeys{cbox}{border=false,width=\textwidth,#1}%
+    \par\noindent\hspace*{\fill}%
+    \edef\tempa{true}%
+    \ifx\cbox@border\tempa
+        \setlength{\fboxrule}{1.2pt}\fcolorbox{#2!70!black}{#2}{\parbox{\dimexpr\cbox@width-2\fboxsep-2.4pt}{\centering\textcolor{white}{#3}}}%
+    \else
+        \colorbox{#2}{\parbox{\dimexpr\cbox@width-2\fboxsep}{\centering\textcolor{white}{#3}}}%
+    \fi
+    \hspace*{\fill}\par
+}
+
+% manual height box - specify vertical padding to control height
+% usage: \coloredboxmanual[options]{color}{text}{padding}
+% options: border = add darker border | width = custom width (default: \textwidth)
+% padding: vertical space above and below text (e.g., 1cm, 0.5cm)
+% examples: \coloredboxmanual{THRed}{text}{1cm}
+%           \coloredboxmanual[border]{THRed}{text}{1cm}
+%           \coloredboxmanual[width=0.5\textwidth]{THRed}{text}{0.5cm}
+\define@key{cboxm}{border}[true]{\def\cboxm@border{#1}}
+\define@key{cboxm}{width}{\def\cboxm@width{#1}}
+\newcommand{\coloredboxmanual}[4][]{%
+    \setkeys{cboxm}{border=false,width=\textwidth,#1}%
+    \par\noindent\hspace*{\fill}%
+    \edef\tempa{true}%
+    \ifx\cboxm@border\tempa
+        \setlength{\fboxrule}{1.2pt}\fcolorbox{#2!70!black}{#2}{\parbox{\dimexpr\cboxm@width-2\fboxsep-2.4pt}{\vspace{#4}\centering\textcolor{white}{#3}\vspace{#4}}}%
+    \else
+        \colorbox{#2}{\parbox{\dimexpr\cboxm@width-2\fboxsep}{\vspace{#4}\centering\textcolor{white}{#3}\vspace{#4}}}%
+    \fi
+    \hspace*{\fill}\par
+}
+\makeatother
+
+% -------------------- internal setup -------------------- %
+
+\title{\presentationtitle}
+\subtitle{\presentationsubtitle}
+\author{\authorname}
+\date{\presentationdate}
+\institute{
+    \namesecond
+}
+
+\setlength{\parskip}{0.5em}  % spacing between paragraphs
+
+% apply user-defined vertical alignment setting
+\makeatletter
+\AtBeginDocument{%
+    \normaltextsize
+    \def\tempa{c}%
+    \ifx\verticalAlignment\tempa
+        \beamer@centeredtrue
+    \else
+        \beamer@centeredfalse
+    \fi
+    % apply PDF metadata
+    \hypersetup{
+        pdfauthor={\authorname},
+        pdftitle={\presentationtitle -- \presentationsubtitle},
+        pdfsubject={\pdfsubject},
+        pdfkeywords={\pdfkeywords}
+    }
+}
+\makeatother
+
+% automatically apply smaller font to tables
+\AtBeginEnvironment{table}{\captionsizetext}
+\AtBeginEnvironment{tabular}{\captionsizetext}
+
+\graphicspath{{images/}}  % default folder for images
+
+% --- german language support for cross-references --- %
+\newcommand{\crefpairconjunction}{ und~}
+\newcommand{\crefrangeconjunction}{ bis~}
+\crefname{figure}{Abbildung}{Abbildungen}
+\crefname{table}{Tabelle}{Tabellen}

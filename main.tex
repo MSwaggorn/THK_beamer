@@ -1,106 +1,227 @@
-% Main Presentation File
+% TH Koeln Beamer Theme
+% moritzswaggorn (at) gmail (dot) com
+
+% main presentation file
 \documentclass[aspectratio=169]{beamer}
 
-% Import configuration files
+% import configuration files
 \input{config/packages}
 \input{config/colors}
-\input{config/variables}
 \input{config/fonts}
+\input{config/definitions}
 \input{config/theme}
-\input{config/slide-types}
 
-% Set graphics path
-\graphicspath{{images/}}
 
 \begin{document}
 
-% Title Slide
-\begin{frame}[plain]
+% title slide
+\begin{frame}
 \titlepage
 \end{frame}
 
-% Example: Bullet Points Slide
+% toc, add entries with \section commands, these will NOT be displayed as slide headings
 \begin{frame}
-\frametitle{Signal Characteristics of Interest}
+\frametitle{Inhalt}
+\tableofcontents
+\end{frame}
+
+\section{Einfache Folien}
+
+\subsection{Folie mit Stichpunkten}
+
+\begin{frame}
+\frametitle{Folie mit Stichpunkten}
 
 \begin{itemize}
     \item \textbf{Stichpunkte mit \texttt{itemize}}
     \begin{itemize}
-        \item Verschiedene Farben für jede Ebene.
-        \item Lorem ipsum dolor sit amet.
+        \item \textbf{Verschiedene Farben für jede Ebene}
         \begin{itemize}
-            \item Textumbruch erfolgt automatisch mit richtiger Einrückung: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+            \item \textbf{Textumbruch erfolgt automatisch mit richtiger Einrückung:} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
             \begin{itemize}
-                \item Das ist die letzte Farbe.
+                \item \textbf{Das ist die letzte Farbe und Ebene}
             \end{itemize}
         \end{itemize}
     \end{itemize}
-    
+    \item \textbf{Erste Ebene bekommt etwas mehr Zeilenabstand}
+    \item Excepteur sint occaecat
+    \begin{itemize}
+        \item Lorem ipsum dolor sit amet
+        \item Cupidatat non proident
+        \begin{itemize}
+            \item Sunt in culpa qui officia
+            \item Deserunt mollit anim id
+        \end{itemize}
+    \end{itemize}
 \end{itemize}
 
+
 \end{frame}
 
-% Example: Figure Slide
-\begin{frame}
-\frametitle{Example Figure}
+\subsection{Folie mit Fließtext}
 
+\begin{frame}
+
+\frametitle{Folie mit Fließtext}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \autocites[22\psq]{example2022}{example2023}
+\par
+Excepteur sint occaecat cupidatat non proident \autocite{example2021}, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+
+\end{frame}
+
+\subsection{Folie mit Bild}
+
+\begin{frame}
+
+\frametitle{Folie mit Bild}
 \begin{figure}
     \centering
-    % \includegraphics[width=0.7\textwidth]{example-image}
-    \caption{This is an example figure caption.}
+    % python3 plot_payload_length.py --color-scheme th longtime_zigbee_aqara.csv example_image_1.pdf
+    \includegraphics[width=0.5\textwidth]{example_image_1.pdf}
+    \caption{Optionale Beschreibung hier}
+    \label{fig:slide_image}
 \end{figure}
+
+% custom footnote command 
+\sourcenote{\cref{fig:slide_image}: \href{www.ihrequelle.com/image.pdf}{www.ihrequelle.com/image.pdf}}
 
 \end{frame}
 
-% Example: Side-by-Side Slide
-\begin{frame}
-\frametitle{Side-by-Side Example}
+\subsection{Folie mit Tabelle}
 
-\begin{columns}[T]
+\begin{frame}
+
+\frametitle{Folie mit Tabelle}
+
+\begin{figure}
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.1} % Add airiness
+\centering
+\begin{tabular}{@{}p{2.5cm} l l@{}}
+\toprule
+\textbf{Messwert} & \textbf{Zigbee} & \textbf{Thread} \\
+\midrule
+Accuracy & 91,9~\% ($\pm$6,4~\%) & 100,0~\% ($\pm$0,0  ~\%) \\
+Precision & 93,5~\% & 100,0~\% \\
+Recall & 91,9~\% & 100,0~\% \\
+F1-Score & 91,6~\% & 100,0~\% \\
+\bottomrule
+\end{tabular}
+\caption{Optionale Beschreibung hier}
+\label{tab:cross_validation}
+\end{table}
+\end{figure}
+
+\textbf{Vertikal verteilt können Elemente einfach übereinander eingesetzt werden (wie dieser Text unter der Tabelle), für horizontale Verteilung siehe nächste Folien.}
+
+\end{frame}
+
+\section{Nicht so einfache Folien}
+
+\begin{frame}
+
+\subsection{Folie mit Textboxen}
+
+\frametitle{Folie mit Textboxen}
+\vspace{1em}
+% box with automatic line breaking
+\coloredbox{THRed}{\textbf{Textboxen mit automatischer Dicke:} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua}
+\vspace{0.5em}
+% box with manual thickness
+\coloredboxmanual[width=0.7\textwidth]{THOrange}{\textbf{...oder mit manueller Dicke. Die Länge kann bei beiden Typen festgelegt werden (standardmäßig Textbreite).}}{0.4cm}
+\vspace{0.5em}
+% box with border
+\coloredbox[border]{THPurple}{\textbf{Optionaler Rand mit passender Farbe}}
+\vspace{0.5em}
+\coloredbox[width=0.5\textwidth]{THRedLight}{\textcolor{THRed}{Durchsichtige Farben als Alternative}}
+
+\end{frame}
+
+\subsection{Side-by-Side}
+
+\begin{frame}
+
+\frametitle{Side-by-Side}
+
+\begin{columns}[T,onlytextwidth]
     \begin{column}{0.48\textwidth}
         \begin{itemize}
-            \item First item
-            \item Second item
-            \item Third item
-        \end{itemize}
+            \item \textbf{Jeder Elementtyp (Text, Abbildung, Tabelle) kann hier nebeneinander dargestellt werden}
+            \item Consectetur adipiscing elit
+            \item Sed do eiusmod tempor incididunt
+            \begin{itemize}
+                \item Ut labore et dolore magna aliqua
+                \item Enim ad minim veniam
+            \end{itemize}
+            \item Quis nostrud exercitation ullamco
+            \begin{itemize}
+                \item Laboris nisi ut aliquip ex ea
+                \begin{itemize}
+                    \item Commodo consequat duis aute
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}   
     \end{column}
     
     \begin{column}{0.48\textwidth}
         \begin{figure}
             \centering
-            % \includegraphics[width=\textwidth]{example-image}
-            \caption{Figure caption}
+            \vspace{-5pt} % sometimes manual adjusting is needed to get nice horizontal alignment between the two sides
+            \includegraphics[width=\textwidth]{example_image_1.pdf}
+            \caption{Optionale Beschreibung hier}
         \end{figure}
+    \sourcenote{\qquad  \textbackslash sourcenote funktioniert auch in columns!} % sometimes manual adjusting here looks better (aligment normally at column border, might be too far left with images that dont "begin" at their border)
     \end{column}
 \end{columns}
 
 \end{frame}
 
-% Example: Side-by-Side with Subheadings
-\begin{frame}
-\frametitle{Comparison}
+\subsection{Side-by-Side mit Unterüberschriften}
 
-\begin{columns}[T]
+\begin{frame}
+    
+\frametitle{Side-by-Side mit Unterüberschriften}
+
+\begin{columns}[T,onlytextwidth]
     \begin{column}{0.48\textwidth}
-        \subheading{Method A}
+        \subheading{Links}
         \begin{itemize}
-            \item Advantage 1
-            \item Advantage 2
+            \item \textbf{Auch hier kann jeder Elementtyp genutzt werden}
+            \item Consectetur adipiscing elit
+            \begin{itemize}
+                \item Sed do eiusmod tempor
+                \item Ut labore et dolore magna
+            \end{itemize}
+            \item Quis nostrud exercitation
+            \begin{itemize}
+                \item Ullamco laboris nisi
+                \begin{itemize}
+                    \item Commodo consequat duis
+                    \item Irure dolor in reprehenderit
+                \end{itemize}
+            \end{itemize}
         \end{itemize}
     \end{column}
     
     \begin{column}{0.48\textwidth}
-        \subheading{Method B}
+        \subheading{Rechts}
         \begin{itemize}
-            \item Advantage 1
-            \item Advantage 2
+            \item Excepteur sint occaecat
+            \item Cupidatat non proident
+            \begin{itemize}
+                \item Sunt in culpa qui officia
+                \item Deserunt mollit anim id
+            \end{itemize}
+            \item Aliquip ex ea commodo
         \end{itemize}
+        \vspace{0.5em}
+        \coloredbox[border]{THOrange}{\textbf{Textboxen passen sich automatisch auf halbseitiges Layout an}}
     \end{column}
 \end{columns}
 
 \end{frame}
 
-% References
+% references
 \begin{frame}[allowframebreaks]
 \frametitle{Literatur}
 \printbibliography[heading=none]

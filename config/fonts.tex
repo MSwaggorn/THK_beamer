@@ -1,26 +1,21 @@
-% Font and Text Size Definitions
+% -------------------- font sizes -------------------- %
+% adjust these to change text sizes throughout the presentation
+% syntax: \fontsize{size}{line spacing}\selectfont
 
-% Define custom font sizes
+% --- slide content fonts --- %
 \newcommand{\headingsize}{\fontsize{12pt}{14pt}\selectfont}
-\newcommand{\subheadingsize}{\fontsize{11pt}{13pt}\selectfont}
+\newcommand{\subheadingsize}{\fontsize{10pt}{12pt}\selectfont}
 \newcommand{\normaltextsize}{\fontsize{9pt}{11pt}\selectfont}
-\newcommand{\captionsizetext}{\fontsize{8pt}{10pt}\selectfont}
+\newcommand{\captionsizetext}{\fontsize{7pt}{8pt}\selectfont}
 \newcommand{\footnotesmallsize}{\fontsize{5pt}{6pt}\selectfont}
 
-% Set default beamer font sizes
+% --- title page fonts --- %
+\newcommand{\titlesize}{\fontsize{14pt}{16pt}\selectfont}
+\newcommand{\subtitlesize}{\fontsize{12pt}{14pt}\selectfont}
+
+% apply font sizes to beamer elements
 \setbeamerfont{frametitle}{size=\headingsize}
 \setbeamerfont{normal text}{size=\normaltextsize}
 \setbeamerfont{footnote}{size=\footnotesmallsize}
 \setbeamerfont{caption}{size=\captionsizetext}
 \setbeamerfont{caption name}{size=\captionsizetext}
-
-% Custom command for subheadings in content
-\newcommand{\subheading}[1]{%
-    {\subheadingsize\bfseries #1}%
-    \par\vspace{0.5em}%
-}
-
-% Adjust spacing
-\AtBeginDocument{%
-    \normaltextsize
-}

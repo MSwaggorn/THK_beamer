@@ -1,39 +1,57 @@
-% Package Imports
-% Beamer base packages
-\usepackage[ngerman]{babel}          % German language support
-\usepackage[utf8]{inputenc}          % UTF-8 input encoding
-\usepackage[T1]{fontenc}             % Font encoding
-\usepackage{csquotes}                % Context sensitive quotation marks
-\usepackage{helvet}                  % Helvetica font
-\renewcommand{\familydefault}{\sfdefault} % Set sans-serif as default
+% -------------------- package imports -------------------- %
 
-% Graphics and colors
-\usepackage{graphicx}                % Include graphics
-\usepackage{xcolor}                  % Color support
-\usepackage{tikz}                    % Drawing capabilities
+% --- language and text encoding --- %
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
 
-% Tables
-\usepackage{booktabs}                % Professional tables
+% --- fonts --- %
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}  % use sans-serif throughout
 
-% References and citations
+% --- graphics and visual elements --- %
+\usepackage{graphicx}
+\usepackage{transparent}  % for image opacity
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% --- tables --- %
+\usepackage{booktabs}
+
+% --- bibliography and citations --- %
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
 \addbibresource{references.bib}
+\renewcommand*{\multicitedelim}{\addsemicolon\space}  % semicolon separator for \autocites
 
-% Cross-referencing
-\usepackage{hyperref}                % Hyperlinks
-\usepackage{cleveref}                % Clever cross-references
-
-% Additional useful packages
-\usepackage{amsmath}                 % Math support
-\usepackage{amssymb}                 % Math symbols
-\usepackage{caption}                 % Caption customization
-\usepackage{subcaption}              % Subfigures support
-\usepackage{enumitem}                % Enhanced list formatting
-
-% Configure hyperref
+% --- hyperlinks and cross-references --- %
+\usepackage[implicit=false]{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
-    citecolor=THRed,
-    urlcolor=THRed
+    citecolor=black,
+    urlcolor=black,
+    allcolors=black,
+    linktoc=all,
+    breaklinks=true,
+    hidelinks,
+    bookmarksnumbered=true,
+    pdfstartview=FitH
 }
+
+\usepackage{cleveref}  % must be loaded after hyperref
+
+% --- mathematics --- %
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% --- captions and lists --- %
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+
+% underline all URL links
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\underline{#2}}}
+\let\oldurl\url
+\renewcommand{\url}[1]{\underline{\oldurl{#1}}}

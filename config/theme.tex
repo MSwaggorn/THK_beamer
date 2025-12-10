@@ -1,202 +1,191 @@
-% TODO: footer abstände doch gleichnäßig?
-% TODO: dicke th kunst dicker?
-% TODO: abstand titel größer?
+% -------------------- theme configuration -------------------- %
 
-% Use minimal theme as base
 \usetheme{default}
 \usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}  % hide navigation symbols
 
-% Remove navigation symbols
-\setbeamertemplate{navigation symbols}{}
-
-%=============================================================================
-% HEADER/TOP BAR CONFIGURATION
-%=============================================================================
-% Define lengths for header bars (do this once, outside the template)
+% --- colored bar at top of slides --- %
 \newlength{\thkwhitewidth}
 \newlength{\thkcolorwidth}
 
 \setbeamertemplate{headline}{%
     \leavevmode%
-    % Calculate remaining width after white section
     \setlength{\thkwhitewidth}{1cm}%
     \setlength{\thkcolorwidth}{\paperwidth}%
     \addtolength{\thkcolorwidth}{-\thkwhitewidth}%
     \setlength{\thkcolorwidth}{0.333\thkcolorwidth}%
     \hbox{%
-        % White section on the left (until heading indent)
-        \begin{beamercolorbox}[wd=\thkwhitewidth,ht=2.5pt,dp=0pt]{white section}%
+        \begin{beamercolorbox}[wd=\thkwhitewidth,ht=3pt,dp=0pt]{white section}%
         \end{beamercolorbox}%
-        % Red section
-        \begin{beamercolorbox}[wd=\thkcolorwidth,ht=2.5pt,dp=0pt]{red section}%
+        \begin{beamercolorbox}[wd=\thkcolorwidth,ht=3pt,dp=0pt]{red section}%
         \end{beamercolorbox}%
-        % Orange section
-        \begin{beamercolorbox}[wd=\thkcolorwidth,ht=2.5pt,dp=0pt]{orange section}%
+        \begin{beamercolorbox}[wd=\thkcolorwidth,ht=3pt,dp=0pt]{orange section}%
         \end{beamercolorbox}%
-        % Purple section
-        \begin{beamercolorbox}[wd=\thkcolorwidth,ht=2.5pt,dp=0pt]{purple section}%
+        \begin{beamercolorbox}[wd=\thkcolorwidth,ht=3pt,dp=0pt]{purple section}%
         \end{beamercolorbox}%
     }%
 }
 
-% Define colors for header sections
 \setbeamercolor{white section}{bg=white}
 \setbeamercolor{red section}{bg=THRed}
 \setbeamercolor{orange section}{bg=THOrange}
 \setbeamercolor{purple section}{bg=THPurple}
 
-%=============================================================================
-% FOOTER/FOOTLINE CONFIGURATION
-%=============================================================================
-
-% Define footline colors
+% --- footer colors --- %
 \setbeamercolor{footline white}{bg=white}
 \setbeamercolor{footline separator}{bg=black}
 \setbeamercolor{footline left}{fg=black,bg=white}
 \setbeamercolor{footline middle}{fg=black,bg=white}
 \setbeamercolor{footline right}{fg=black,bg=white}
 
-%=============================================================================
-% TITLE PAGE CONFIGURATION
-%=============================================================================
+% --- title page layout --- %
+\newcommand{\titleimage}{\titleimagevar}
+
 \setbeamertemplate{title page}{%
-    \vbox{}
-    \vfill
+    \vspace{-0.2cm}
+    {\transparent{0.9}\includegraphics[width=\dimexpr\paperwidth-1cm\relax,height=8cm,keepaspectratio]{\titleimage}}%
+    \vspace{0.5cm}
+    \par
     \begingroup
-        \centering
-        \begin{beamercolorbox}[sep=8pt,center]{title}
-            \usebeamerfont{title}\inserttitle\par%
+        \begin{beamercolorbox}[wd=\textwidth,left]{title}
+            {\usebeamerfont{title}\inserttitle}\par%
             \ifx\insertsubtitle\@empty%
             \else%
-                \vskip0.25em%
+                \vskip0.3em%
                 {\usebeamerfont{subtitle}\insertsubtitle\par}%
             \fi%
         \end{beamercolorbox}%
-        \vskip1em\par
-        \begin{beamercolorbox}[sep=8pt,center]{author}
-            \usebeamerfont{author}\insertauthor
-        \end{beamercolorbox}
-        \begin{beamercolorbox}[sep=8pt,center]{institute}
-            \usebeamerfont{institute}\insertinstitute
-        \end{beamercolorbox}
-        \begin{beamercolorbox}[sep=8pt,center]{date}
-            \usebeamerfont{date}\insertdate
-        \end{beamercolorbox}
     \endgroup
     \vfill
 }
 
-% Title page font settings
-\setbeamerfont{title}{size=\Large,series=\bfseries}
-\setbeamerfont{subtitle}{size=\large}
+\setbeamerfont{title}{size=\titlesize,series=\bfseries}
+\setbeamerfont{subtitle}{size=\subtitlesize}
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{institute}{size=\small}
 \setbeamerfont{date}{size=\small}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{subtitle}{fg=black}
 
-%=============================================================================
-% FRAME TITLE CONFIGURATION
-%=============================================================================
+% --- slide headings --- %
 \setbeamertemplate{frametitle}{%
-    \vskip0.28cm%
+    \vskip0.37cm
     \begin{beamercolorbox}[wd=\textwidth]{frametitle}%
         {\usebeamerfont{frametitle}\textbf{\insertframetitle}}%
-    \end{beamercolorbox}%
-    \vskip-0.4cm%
+    \end{beamercolorbox}
+    \vskip0.2cm
 }
 
 \setbeamercolor{frametitle}{fg=black,bg=white}
 
-%=============================================================================
-% ITEMIZE/ENUMERATE CONFIGURATION
-%=============================================================================
-% Set itemize items to circles with appropriate colors
+% --- bullet lists (itemize) --- %
+% four levels with different colors: black, red, orange, purple
+
 \setbeamertemplate{itemize item}{\large\textbullet}
 \setbeamertemplate{itemize subitem}{\large\textbullet}
 \setbeamertemplate{itemize subsubitem}{\large\textbullet}
 \setbeamertemplate{itemize subsubsubitem}{\large\textbullet}
 
-% Set colors for each level
 \setbeamercolor{itemize item}{fg=black}
 \setbeamercolor{itemize subitem}{fg=THRed}
 \setbeamercolor{itemize subsubitem}{fg=THOrange}
 \setbeamercolor{itemize subsubsubitem}{fg=THPurple}
 
-% Configure enumitem for beamer compatibility and 4 levels
 \setlistdepth{4}
 \renewlist{itemize}{itemize}{4}
 
-% Set indentation and colored labels for each level
-\setlist[itemize,1]{label={\color{black}\large\textbullet}, leftmargin=*}
-\setlist[itemize,2]{label={\color{THRed}\large\textbullet}, leftmargin=1.2em}
-\setlist[itemize,3]{label={\color{THOrange}\large\textbullet}, leftmargin=1.2em}
-\setlist[itemize,4]{label={\color{THPurple}\large\textbullet}, leftmargin=1em}
+\setlist[itemize,1]{label={\raisebox{-0.24ex}{\color{black}\large\textbullet}}, leftmargin=*, itemsep=0.55em, partopsep=0pt}
+\setlist[itemize,2]{label={\raisebox{-0.24ex}{\color{THRed}\large\textbullet}}, leftmargin=1.2em}
+\setlist[itemize,3]{label={\raisebox{-0.24ex}{\color{THOrange}\large\textbullet}}, leftmargin=1.2em}
+\setlist[itemize,4]{label={\raisebox{-0.24ex}{\color{THPurple}\large\textbullet}}, leftmargin=1em}
 
-% Set font sizes for each level (all same size)
 \setbeamerfont{itemize/enumerate body}{size=\normaltextsize}
 \setbeamerfont{itemize/enumerate subbody}{size=\normaltextsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\normaltextsize}
 
-% Increase spacing between items
 \let\olditem\item
 \renewcommand{\item}{\olditem\vspace{0.1ex}}
 
-%=============================================================================
-% GENERAL BEAMER SETTINGS
-%=============================================================================
-% Set background color
+% --- general appearance --- %
 \setbeamercolor{background canvas}{bg=white}
-
-% Set normal text color
 \setbeamercolor{normal text}{fg=black,bg=white}
 
-% Remove frame numbering from title page
+% enable figure and table numbering
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{caption}{size=\captionsizetext}
+\setbeamerfont{caption name}{size=\captionsizetext,series=\bfseries}
+\setbeamercolor{caption name}{fg=black}
+
+% --- footer layout --- %
 \makeatletter
 \defbeamertemplate*{footline}{myfootline}
 {
-  \ifnum\c@framenumber=1
-  \else
     \leavevmode%
     \vbox to 0pt{%
-      \vskip-10.5ex%
+      \vskip-10ex%
       \hbox{%
-        % White space before line
         \begin{beamercolorbox}[wd=1cm,ht=0.25pt,dp=0pt]{footline white}%
         \end{beamercolorbox}%
-        % Thin line above footer starting at heading indent
         \begin{beamercolorbox}[wd=\dimexpr\paperwidth-1cm\relax,ht=0.25pt,dp=0pt]{footline separator}%
         \end{beamercolorbox}%
       }%
       \vskip1pt%
       \hbox{%
-        % White space on left to match heading indent
         \hspace{1cm}%
-        % Left section: Date and page number
+        % left: date and page number
         \begin{beamercolorbox}[wd=0.15\paperwidth,ht=3ex,dp=1ex,left]{footline left}%
             \parbox[t]{0.5\paperwidth}{\footnotesmallsize\raggedright
             \footnotesmallsize\presentationdate \\
-            \vspace{2ex}
-            %\hspace{2em}
+            \vspace{3ex}
             Seite \insertframenumber%
             }
         \end{beamercolorbox}%
-        %
-        % Middle section: title and author info
-        \begin{beamercolorbox}[wd=0.5\paperwidth,ht=3ex,dp=1ex,left]{footline middle}%
-            \parbox[t]{0.5\paperwidth}{\footnotesmallsize\raggedright
+        % middle: title and author info
+        \begin{beamercolorbox}[wd=0.6\paperwidth,ht=3ex,dp=1ex,left]{footline middle}%
+            \parbox[t]{0.6\paperwidth}{\footnotesmallsize\raggedright
             \textbf{\presentationtitle} -- \presentationsubtitle\\
+            \vspace{1ex}
             \authorname\\
-            \namesecond}%
+            \name, \namesecond}%
         \end{beamercolorbox}%
-        %
-        % Right section: University logo
-        \begin{beamercolorbox}[wd=0.28\paperwidth,ht=3ex,dp=1ex,right,rightskip=0.3cm]{footline right}%
+        % right: university logo
+        \begin{beamercolorbox}[wd=0.18\paperwidth,ht=3ex,dp=1ex,right,rightskip=0.3cm]{footline right}%
             \raisebox{-4.8ex}{\includegraphics[height=7ex]{\universitylogo}}%
         \end{beamercolorbox}%
       }%
       \vss%
     }%
-  \fi
 }
 \makeatother
 
 \setbeamertemplate{footline}[myfootline]
+
+% --- bibliography styling --- %
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+\setbeamercolor{bibliography item}{fg=black}
+
+\setbeamerfont{bibliography entry author}{size=\normaltextsize}
+\setbeamerfont{bibliography entry title}{size=\normaltextsize}
+\setbeamerfont{bibliography entry location}{size=\normaltextsize}
+\setbeamerfont{bibliography entry note}{size=\normaltextsize}
+\setbeamerfont{bibliography item}{size=\normaltextsize}
+
+% --- table of contents styling --- %
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{subsection in toc}{fg=black}
+\setbeamercolor{subsubsection in toc}{fg=black}
+
+\setbeamerfont{section in toc}{series=\bfseries}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\leftskip=1.5em\usebeamercolor[fg]{subsection in toc}%
+  \usebeamerfont{subsection in toc}\inserttocsectionnumber.\inserttocsubsectionnumber\hspace{0.5em}\inserttocsubsection\par
+}
+\setbeamertemplate{subsubsection in toc}{%
+  \leavevmode\leftskip=3em\usebeamercolor[fg]{subsubsection in toc}%
+  \usebeamerfont{subsubsection in toc}\inserttocsectionnumber.\inserttocsubsectionnumber.\inserttocsubsubsectionnumber\hspace{0.5em}\inserttocsubsubsection\par
+}
